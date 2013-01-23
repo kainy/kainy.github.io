@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script>
+		var nTMstart= +new Date();
+		var sSeparator= '__';
+		
+		var calculateGap= function(gap, start, end){
+			gap&& (gap.innerHTML= end.innerHTML- start.innerHTML);
+		}
+		
+		var dump= function(){
+			now.innerHTML= nTMstart+ sSeparator+ 'nTMstart';
+			var elsLabel= document.getElementsByTagName('label');
+			for(var i=1; i< elsLabel.length; i++){
+				var el= elsLabel[i];
+				el.innerHTML= performance.timing[el.id];
+				el.title= sSeparator+ el.id;
+			}
+
+			calculateGap(redirect, redirectStart, redirectEnd);
+			calculateGap(unload, unloadEventStart, unloadEventEnd);
+			calculateGap(appCache, fetchStart, domainLookupStart);
+			calculateGap(DNS, domainLookupStart, domainLookupEnd);
+			calculateGap(TCP, connectStart, connectEnd);
+			calculateGap(Request, requestStart, responseStart);
+			calculateGap(Response, responseStart, responseEnd);
+			calculateGap(Processing, domLoading, domInteractive);
+			calculateGap(Processing1, domInteractive, domContentLoadedEventStart);
+			calculateGap(Processing2, domContentLoadedEventStart, domComplete);
+			calculateGap(onLoad, loadEventStart, loadEventEnd);
+			
+			calculateGap(_LoadEventFired, navigationStart, loadEventEnd); // 总时长
+			calculateGap(_DOMContentLoaded, navigationStart, domContentLoadedEventEnd); // DOMready事件
+			calculateGap(_WhiteScreen, navigationStart, domInteractive); //白屏时长
+			
+			console.log(performance.timing);
+		};
+		
+		window.onload= function(){
+			console.log('TMrealLoad:', +new Date());
+			setTimeout(dump, 40);
+		}
+	</script>
+	<title>Navigation Timing test</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="bg">
+		<label class="attr_node" id="now"></label>
+		<label class="attr_node" id="navigationStart"></label>
+		<label class="attr_node" id="redirectStart"></label>
+		<label class="attr_node" id="unloadEventStart"></label>
+		<label class="attr_node" id="unloadEventEnd"></label>
+		<label class="attr_node" id="redirectEnd"></label>
+		<label class="attr_node" id="fetchStart"></label>
+		<label class="attr_node" id="domainLookupStart"></label>
+		<label class="attr_node" id="domainLookupEnd"></label>
+		<label class="attr_node" id="connectStart"></label>
+		<label class="attr_node optional" id="secureConnectionStart"></label>
+		<label class="attr_node" id="connectEnd"></label>
+		<label class="attr_node" id="requestStart"></label>
+		<label class="attr_node" id="responseStart"></label>
+		<label class="attr_node" id="responseEnd"></label>
+		<label class="attr_node" id="domLoading"></label>
+		<label class="attr_node" id="domInteractive"></label>
+		<label class="attr_node" id="domContentLoadedEventStart"></label>
+		<label class="attr_node" id="domContentLoadedEventEnd"></label>
+		<label class="attr_node" id="domComplete"></label>
+		<label class="attr_node" id="loadEventStart"></label>
+		<label class="attr_node" id="loadEventEnd"></label>
+		
+		<label class="attr_gap" id="redirect"></label>
+		<label class="attr_gap" id="unload"></label>
+		<label class="attr_gap" id="appCache"></label>
+		<label class="attr_gap" id="DNS"></label>
+		<label class="attr_gap" id="TCP"></label>
+		<label class="attr_gap" id="Request"></label>
+		<label class="attr_gap" id="Response"></label>
+		<label class="attr_gap" id="Processing"></label>
+		<label class="attr_gap" id="Processing1"></label>
+		<label class="attr_gap" id="Processing2"></label>
+		<label class="attr_gap" id="onLoad"></label>
+		
+		<label class="attr_gap" id="_LoadEventFired"></label>
+		<label class="attr_gap" id="_DOMContentLoaded"></label>
+		<label class="attr_gap" id="_WhiteScreen"></label>
+	</div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+﻿@charset "utf-8";
+.bg{
+	background: url(timing-overview.png) no-repeat;
+	height: 879px;
+	width: 1500px;
+}
+.attr_node,
+.attr_gap{
+	width: 70px;
+	height: 20px;
+	background: yellow;
+	position: absolute;
+}
+.attr_gap{
+    background-color: green;
+}
+.optional{
+	opacity: .5;
+}
+#now{
+	top: 760px;
+	left: 1300px;
+}
+#navigationStart{
+	top: 20px;
+	left: 590px;
+}
+#redirectStart{
+	top: 60px;
+	left: 590px;
+}
+#unloadEventStart{
+	top: 850px;
+	left: 1150px;
+}
+#unloadEventEnd{
+	top: 810px;
+	left: 1180px;
+}
+#redirectEnd{
+	top: 90px;
+	left: 600px;
+}
+#fetchStart{
+	top: 124px;
+	left: 620px;
+}
+#domainLookupStart{
+	top: 157px;
+	left: 780px;
+}
+#domainLookupEnd{
+	top: 187px;
+	left: 800px;
+}
+#connectStart{
+	top: 220px;
+	left: 800px;
+}
+#secureConnectionStart{
+	top: 260px;
+	left: 950px;
+}
+#connectEnd{
+	top: 290px;
+	left: 860px;
+}
+#requestStart{
+	top: 320px;
+	left: 900px;
+}
+#responseStart{
+	top: 355px;
+	left: 990px;
+}
+#responseEnd{
+	top: 388px;
+	left: 1060px;
+}
+#domLoading{
+	top: 780px;
+	left: 1250px;
+}
+#domInteractive{
+	top: 740px;
+	left: 1300px;
+}
+#domContentLoadedEventStart{
+	top: 705px;
+	left: 1390px;
+}
+#domContentLoadedEventEnd{
+	top: 725px;
+	left: 1390px;
+}
+#loadEventStart{
+	top: 630px;
+	left: 1445px
+}
+#domComplete{
+	top: 665px;
+	left: 1370px;
+}
+#loadEventEnd{
+	top: 590px;
+	left: 1460px;
+}
+
+#redirect{
+	top: 70px;
+	left: 380px;
+}
+#unload{
+	top: 830px;
+	left: 950px;
+}
+#appCache{
+	top: 140px;
+	left: 440px;
+}
+#DNS{
+	top: 170px;
+	left: 480px;
+}
+#TCP{
+	top: 260px;
+	left: 560px;
+}
+#Request{
+	top: 350px;
+	left: 660px;
+}
+#Response{
+	top: 380px;
+	left: 800px;
+}
+#Processing{
+	top: 760px;
+	left: 1050px;
+}
+#Processing1{
+	top: 725px;
+	left: 1100px;
+}
+#Processing2{
+	top: 680px;
+	left: 1150px;
+}
+#onLoad{
+	top: 560px;
+	left: 1220px;
+}
+#_LoadEventFired{
+	top: 5px;
+	left: 1000px;
+}
+#_DOMContentLoaded{
+	top: 30px;
+	left: 1000px;
+}
+#_WhiteScreen{
+	top: 55px;
+	left: 1000px;
+}
