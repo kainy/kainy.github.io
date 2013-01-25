@@ -32,7 +32,7 @@
 			calculateGap(onLoad, loadEventStart, loadEventEnd);
 			
 			calculateGap(_LoadEventFired, navigationStart, loadEventEnd); // 总时长
-			calculateGap(_DOMContentLoaded, navigationStart, domContentLoadedEventEnd); // DOMready事件
+			calculateGap(_DomComplete, navigationStart, domComplete); // DOMready事件
 			calculateGap(_WhiteScreen, navigationStart, domInteractive); //白屏时长
 			
 			console.log(performance.timing);
@@ -84,7 +84,7 @@
 		<label class="attr_gap" id="onLoad"></label>
 		
 		<label class="attr_gap" id="_LoadEventFired"></label>
-		<label class="attr_gap" id="_DOMContentLoaded"></label>
+		<label class="attr_gap" id="_DomComplete"></label>
 		<label class="attr_gap" id="_WhiteScreen"></label>
 	</div>
 </body>
