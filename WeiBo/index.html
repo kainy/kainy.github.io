@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:wb="http://open.weibo.com/wb">
+	<head>
+		<meta charset="utf8" />
+		<title>Weibo JSSDK 调用</title>
+		<base target="_blank" />
+		<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1807013049" type="text/javascript" charset="utf-8"></script>
+		<script><!-- 3153193835 厝边 1807013049 个人主页 429576669 工院大家-->
+		var publicTimeline= function(n){
+			WB2.anyWhere(function(W){
+				W.parseCMD('/statuses/public_timeline.json', function(sResult, bStatus){
+					bStatus&& console.log(sResult);
+				}, {
+					source: 1807013049,
+					count: n
+				}, {
+					method: 'get'
+				});
+			});
+		}
+		var update= function(content){
+			WB2.anyWhere(function(W){
+				W.parseCMD('/statuses/update.json', function(sR, bS){
+					bS&& console.log(sR);
+				}, {
+					source: 1807013049,
+					status: content,
+					visible: 2 //自己可见（update20130125：密友也可见了）
+				}, {
+					method: 'post'
+				});
+			});
+		}
+		</script>
+	</head>
+	<body>
+		<h3>基本操作(console中查看响应信息)</h3>
+			<a href="javascript:WB2.login(function(){console.log('登录成功')});" id="login" >登录</a><br/>
+			<a href="javascript:WB2.logout(function(){console.log('退出成功')});" id="logout" >退出</a><br/>
+			<a href="javascript:WB2.checkLogin()? console.log('已登录'): console.log('未登录');" id="checkLogin" >登录检测</a><br/>
+			<a href="javascript:publicTimeline(2);" >返回全站最新的2条公共微博(anyWhere)</a><br/>
+			<a href="javascript:update('发布一条新微博(anyWhere)测试\r\n 链接：http://kainy.sinaapp.com/weibo-JS-SDK-demo.html 神马的。');" >发布一条新微博(anyWhere)</a>
+			<br/>
+		<h3>微博连接按钮</h3>
+			<a href="javascript:;" id="wb_connect_btn" >微博连接按钮(widget)</a><br/>
+<script>
+	WB2.anyWhere(function(W){
+		W.widget.connectButton({
+			id: "wb_connect_btn",
+			type: '3,2',
+			callback : {
+				login:function(o){
+					console.log(o)
+				},
+				logout:function(){
+					console.log('logout');
+				}
+			}
+		});
+	});
+</script>
+		
+		<h3>微博名片(鼠标经过时显示)</h3>
+			<h4>单独定义：</h4>
+				非链接：<span id="card" href=" http://weibo.com/kainy" wb_screen_name="kainy" >我的微博名片</span>
+				<br>
+				链接：<a id="wb_uid" wb_user_id="kainy" href="http://kainy.cn/" >我的个人主页</a>
+			<h4>批量定义：</h4>
+				<div id="search">
+					链接：<a wb_screen_name="Kainy" href="http://weibo.com/kainy?自定义的url">去往 Kainy@weibo.com 的链接</a>
+					<br>
+					字符串（at微博id）：@kainy
+				</div>
+				<div id="weibo_uid_area">
+					链接：<a href="http://www.woiweb.net" wb_user_id="1299070523">woiweb</a>
+					<br>
+					非链接：<span wb_user_id="kainy">不带链接的名片</span>
+				</div>
+<script>
+	WB2.anyWhere(function(W){
+		W.widget.hoverCard({
+			id: "card"
+		});
+		W.widget.hoverCard({
+			id: "search",
+			search: true
+		}); 
+		W.widget.hoverCard({
+			id: "wb_uid"
+		});	
+		W.widget.hoverCard({
+			id: "weibo_uid_area",
+			tag: "span",
+			search: true
+		});
+	});
+</script>
+		<h3>发布内容</h3>
+			<a href="javascript:;" id="publish" >微博发布器(widget)</a><br/>
+<script>
+	WB2.anyWhere(function(W){
+		W.widget.publish({
+			'id' : 'publish'
+		});
+	});
+</script>
+		<h3>选择好友</h3>
+			<input id="but" type="button" value=" 显示选择器 " />
+<script>
+	WB2.anyWhere(function(W){
+		W.widget.selector({
+		'id' : "but",	//必选 
+		'callback' : function(data){
+			console.log(data);
+		}
+		});	
+	});
+</script>
+	</body>
+</html>
