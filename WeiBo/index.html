@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:wb="http://open.weibo.com/wb">
 	<head>
-		<meta charset="utf8" />
+		<meta charset="utf-8" />
 		<title>Weibo JSSDK 调用</title>
 		<base target="_blank" />
 		<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1807013049" type="text/javascript" charset="utf-8"></script>
@@ -100,7 +100,7 @@
 <script>
 	WB2.anyWhere(function(W){
 		W.widget.publish({
-			'id' : 'publish'
+			//'id' : 'publish'
 		});
 	});
 </script>
@@ -115,6 +115,8 @@
 		}
 		});	
 	});
+	
+	document.getElementById('publish').click();
 </script>
 	</body>
 </html>
