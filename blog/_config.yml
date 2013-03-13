@@ -1,7 +1,7 @@
 auto: true
 server: true
 permalink: none
-baseurl: "blog"
+baseurl: "/blog"
 exclude:
 - .gitignore
 - README.md
