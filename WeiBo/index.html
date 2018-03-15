@@ -4,7 +4,7 @@
 		<meta charset="utf-8" />
 		<title>Weibo JSSDK 调用</title>
 		<base target="_blank" />
-		<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1807013049" type="text/javascript" charset="utf-8"></script>
+		<script src="https://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=1807013049" type="text/javascript" charset="utf-8"></script>
 		<script><!-- 3153193835 厝边 1807013049 个人主页 429576669 工院大家-->
 		var publicTimeline= function(n){
 			WB2.anyWhere(function(W){
@@ -39,7 +39,7 @@
 			<a href="javascript:WB2.logout(function(){console.log('退出成功')});" id="logout" >退出</a><br/>
 			<a href="javascript:WB2.checkLogin()? console.log('已登录'): console.log('未登录');" id="checkLogin" >登录检测</a><br/>
 			<a href="javascript:publicTimeline(2);" >返回全站最新的2条公共微博(anyWhere)</a><br/>
-			<a href="javascript:update('发布一条新微博(anyWhere)测试\r\n 链接：http://kainy.sinaapp.com/weibo-JS-SDK-demo.html 神马的。');" >发布一条新微博(anyWhere)</a>
+			<a href="javascript:update('发布一条新微博(anyWhere)测试\r\n 链接：'+location.href + ' 神马的。');" >发布一条新微博(anyWhere)</a>
 			<br/>
 		<h3>微博连接按钮</h3>
 			<a href="javascript:;" id="wb_connect_btn" >微博连接按钮(widget)</a><br/>
@@ -64,7 +64,7 @@
 			<h4>单独定义：</h4>
 				非链接：<span id="card" href=" http://weibo.com/kainy" wb_screen_name="kainy" >我的微博名片</span>
 				<br>
-				链接：<a id="wb_uid" wb_user_id="kainy" href="http://kainy.cn/" >我的个人主页</a>
+				链接：<a id="wb_uid" wb_user_id="kainy" href="https://kainy.cn/" >我的个人主页</a>
 			<h4>批量定义：</h4>
 				<div id="search">
 					链接：<a wb_screen_name="Kainy" href="http://weibo.com/kainy?自定义的url">去往 Kainy@weibo.com 的链接</a>
