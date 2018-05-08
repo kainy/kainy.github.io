@@ -5,11 +5,13 @@
 
 </head>
 <body>
-  <label>输入框失去焦点时翻译</label>
+  <center>输入过程中翻译</center>
   <br/>
   <br/>
-  <textarea id="input" name="input" style="width: 90%;height:300px;border: solid greenyellow 0.5px;margin: 5px;background: #eeeeee3d;border-radius:3px;">深圳市罗湖区平安银行大厦</textarea>
+  <label>输入原文：</label>
+  <input id="input" name="input" style="width: 50%;border: solid greenyellow 0.5px;padding: 5px;background: #eeeeee3d;border-radius:3px;" value="深圳市罗湖区平安银行大厦" />
   <br/>
+  <label>输出译文：</label>
   <span id="result"></span>
 <script src="https://shared.ydstatic.com/js/jquery/jquery-3.1.1.min.js"></script>
 <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
@@ -17,31 +19,38 @@
 (function(){
   var appKey = '6ee001443d70f828';
   var key = 'TuwAPbmjbpDheduxplNCSXVz87BNbzBu';//注意：暴露appSecret，有被盗用造成损失的风险
+  let timer = null
+  let range = 555
   var salt = (new Date).getTime();
-  $('#input').on('blur', function(){
-    var query = $('#input').val()
-    // 多个query可以用\n连接  如 query='apple\norange\nbanana\npear'
-    var from = '';
-    var to = 'en';
-    var str1 = appKey + query + salt +key;
-    var sign = md5(str1);
-    $.ajax({
-        url: 'https://openapi.youdao.com/api',
-        // type: 'post',
-        dataType: 'jsonp',
-        data: {
-            q: query,
-            appKey: appKey,
-            salt: salt,
-            from: from,
-            to: to,
-            sign: sign
-        },
-        success: function (data) {
-            console.log(data);
-            $('#result').text(data.translation[0])
-        } 
-    });
+  var fy = function() {
+      if (+ new Date() - timer < range) return
+      var query = $('#input').val()
+      // 多个query可以用\n连接  如 query='apple\norange\nbanana\npear'
+      var from = '';
+      var to = 'en';
+      var str1 = appKey + query + salt +key;
+      var sign = md5(str1);
+      $.ajax({
+          url: 'https://openapi.youdao.com/api',
+          // type: 'post',
+          dataType: 'jsonp',
+          data: {
+              q: query,
+              appKey: appKey,
+              salt: salt,
+              from: from,
+              to: to,
+              sign: sign
+          },
+          success: function (data) {
+              console.log(data);
+              $('#result').text(data.translation[0])
+          } 
+      });
+  }
+  $('#input').on('input', function(){
+    timer = + new Date()
+    setTimeout(fy, range)
   })
 })()
 
