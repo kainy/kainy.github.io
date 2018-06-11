@@ -1,0 +1,87 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="//bank-static.pingan.com.cn">
+  <meta name="renderer" content="webkit">
+  <meta content="telephone=no,email=no" name="format-detection">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta content="telephone=no" name="format-detection">
+  <meta name="W_design" content="750" />
+  <meta name="keywords" content="专属海报" />
+  <meta name="description" content="专属海报" />
+  <meta name="WT.pa_cmid" content="专属海报">
+  <title>微海报设计校对页</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .sample ,
+    .preview {
+      width: 100%;
+      position: absolute;
+    }
+    .drop {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .opacity .sample {
+      opacity: .8;
+    }
+    p {
+      position: absolute;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <div class="drop opacity">
+    <img src="" alt="" class="preview" />
+    <p>将海报拖到此处，
+        <br>
+        <br>
+    校对二维码位置…</p>
+    <img src="https://bank-static-stg.pingan.com.cn/app_upload/brop-mop/tool/d5446876bfda4aceb977dd143d8c3584_750_1334.png?f=" alt="" class="sample"/>
+  </div>
+  <script src="https://bank-static.pingan.com.cn/app_js/??libs/zepto/1.2.0/zepto.min.js"></script>
+  <script>
+    (function(){
+      var $drop = $('.drop')
+      $drop.on('dragenter', ignore)
+      $drop.on('dragover', ignore)
+      $drop.on('drop', function(e){
+        e.preventDefault()
+        e.stopPropagation();
+        
+        console.log(e)
+        var data = e.dataTransfer;
+        var files = data.files
+        processFiles(files)
+      })
+      $drop.on('click', function () {
+        $drop.toggleClass('opacity')
+      })
+      function ignore(e) {
+        e.stopPropagation()
+        e.preventDefault()
+      }
+
+      function processFiles(files) {
+        var file = files[0]
+        var reader = new FileReader()
+        reader.onload = function (e) {
+          $('.preview').attr('src', e.target.result)
+        }
+        reader.readAsDataURL(file)
+      }
+    })()
+  </script>
